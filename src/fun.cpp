@@ -5,20 +5,20 @@
 #include "fun.h"
 
 unsigned int faStr1(const char* str) {
+int iterator = 0;
 int count = 0;
 int inWord = 0;
-int iterator = 0;
 while (*(str + iterator)) {
 if (*(str + iterator) != ' '
-&& !isdigit(*(str + iterator)) && !finWord(inWord)) {
+&& !finWord(inWord) && !isdigit(*(str + iterator))) {
 count++;
 inWord = 1;}
-else if (*(str + iterator) == ' '
-&& finWord(inWord)) inWord = 0;
+else if (finWord(inWord)
+&& *(str + iterator) == ' ') inWord = 0;
 else if (isdigit(*(str + iterator))
 && inWord == 0) inWord = 2;
 else
-if (isdigit(*(str + iterator)) && inWord == 1) {
+if (inWord == 1 && isdigit(*(str + iterator))) {
 inWord = 2;
 count--;}
 iterator++;
@@ -26,11 +26,11 @@ iterator++;
 return count;
 }
 unsigned int faStr2(const char* str) {
+int iterator = 0;
 int count = 0;
 int inWord = 0;
-int iterator = 0;
 while (*(str + iterator)) {
-if (isupper(*(str + iterator)) && inWord == 0) {
+if (inWord == 0 && isupper(*(str + iterator))) {
 count++;
 inWord = 1;}
 else if (!islowermy(*(str + iterator))
@@ -54,7 +54,7 @@ while (*(str + iterator)) {
 if (*(str + iterator) != ' ' && inWord == false) {
 count++;
 inWord = true;
-} else if (*(str + iterator) == ' ' && inWord == true) {
+} else if (inWord == true && *(str + iterator) == ' ') {
 inWord = false;}
 if (inWord == true)
 sum++;
